@@ -1,0 +1,35 @@
+{
+  "categories": [
+    {
+      "name": "Frontend & Mobile",
+      "skills": [
+        { "name": "React", "icon": "devicon-react-original" },
+        { "name": "Next.js", "icon": "devicon-nextjs-plain" },
+        { "name": "React Native", "icon": "devicon-react-original" },
+        { "name": "Tailwind CSS", "icon": "devicon-tailwindcss-original" },
+        { "name": "Expo", "icon": "devicon-react-original" }
+      ]
+    },
+    {
+      "name": "Backend & Cloud",
+      "skills": [
+        { "name": "Node.js", "icon": "devicon-nodejs-plain" },
+        { "name": "Express.js", "icon": "devicon-express-original" },
+        { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" },
+        { "name": "Firebase", "icon": "devicon-firebase-plain" },
+        { "name": "Supabase", "icon": "devicon-supabase-plain" }
+      ]
+    },
+    {
+      "name": "Languages & Tools",
+      "skills": [
+        { "name": "JavaScript", "icon": "devicon-javascript-plain" },
+        { "name": "TypeScript", "icon": "devicon-typescript-plain" },
+        { "name": "Python", "icon": "devicon-python-plain" },
+        { "name": "SQL", "icon": "devicon-azuresqldatabase-plain" },
+        { "name": "Git", "icon": "devicon-git-plain" },
+        { "name": "GitHub", "icon": "devicon-github-original" }
+      ]
+    }
+  ]
+}

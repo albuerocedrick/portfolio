@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   description: "Portfolio of Cedrick Albuero, a software engineer specializing in full-stack web development and AI integration.",
 };
 
+import { NavBar } from "@/components/NavBar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,8 +37,11 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      </head>
       <body className="bg-bg text-text font-body antialiased min-h-full flex flex-col">
-        {/* TODO: Add NavBar Component */}
+        <NavBar />
         {children}
         {/* TODO: Add ChatWidget Component */}
       </body>
