@@ -1,0 +1,21 @@
+{
+  "name": "Cedrick Albuero",
+  "title": "Junior Full-Stack Developer & AI Integration Developer",
+  "location": "Laguna, Philippines",
+  "availability": "Open to full-time, part-time, internship, freelance, remote, hybrid, or on-site opportunities",
+  "email": "albuerocedrick11@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/cedrick-albuero-34957340b",
+  "github": "https://github.com/albuerocedrick",
+  "bio_paragraphs": [
+    "I am an IT student and aspiring software engineer with experience building full-stack web and mobile applications. My work focuses on business process automation, workflow systems, offline-first applications, and AI integration using modern technologies such as React.js, Node.js, PostgreSQL, React Native, Firebase, and Python.",
+    "I have developed projects including an Electronic Business Permits and Licensing System (eBPLS) designed for government workflow automation and Hanap Medisina Offline, a React Native application that uses an on-device TensorFlow Lite model to identify Philippine medicinal plants without internet connectivity. Through these projects, I have gained experience in system architecture, REST API development, authentication, database design, payment integration, and mobile application development.",
+    "I enjoy solving real-world problems through technology and continuously improving my skills in software engineering, AI-assisted applications, scalable system design, and modern development practices. My goal is to build reliable, user-focused solutions that create meaningful impact."
+  ],
+  "engineering_values": [
+    "I prioritize clean, maintainable, and readable code over unnecessary complexity.",
+    "I design systems with scalability, security, and long-term maintainability in mind.",
+    "I focus on solving real user problems through practical and efficient software solutions.",
+    "I value continuous learning, feedback, and iterative improvement throughout development."
+  ],
+  "response_time": "Within 24 hours"
+}
