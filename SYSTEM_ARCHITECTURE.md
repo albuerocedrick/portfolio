@@ -176,11 +176,17 @@ All content lives in `data/` as JSON files. To update your portfolio, edit the J
       "live_url": "https://budget-buddy.vercel.app",
       "github_url": "https://github.com/yourname/budget-buddy",
       "featured": true,
-      "tags": ["Full-Stack", "React", "PostgreSQL"]
+      "tags": ["Full-Stack", "React", "PostgreSQL"],
+      "unavailable_reason": null
     }
   ]
 }
 ```
+
+> [!IMPORTANT]
+> **`live_url` and `github_url` are optional.** If a project is a mobile app, desktop software, or a government/private system where you can't share the URL, set the field to `null` or omit it entirely. The UI will automatically hide the corresponding button.
+>
+> You can also set `"unavailable_reason"` to explain why (e.g., `"Government internal system"`, `"Mobile app — available on Google Play"`, `"Private repository"`).
 
 ### `data/skills.json` — shape
 

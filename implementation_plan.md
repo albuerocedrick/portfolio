@@ -691,7 +691,29 @@ NEXT_PUBLIC_FORMSPREE_ID=your_form_id_here
       "github_url": "https://github.com/yourname/project-name",
       "image": "/images/project-name-screenshot.png",
       "featured": true,
-      "tags": ["Full-Stack", "React", "PostgreSQL"]
+      "tags": ["Full-Stack", "React", "PostgreSQL"],
+      "unavailable_reason": null
+    }
+  ]
+}
+```
+
+> [!IMPORTANT]
+> **`live_url` and `github_url` are optional.** If a project is a mobile app, desktop software, or a government/private system where you can't share the URL, set the field to `null` or omit it entirely. The UI will automatically hide the corresponding button.
+>
+> You can also set `"unavailable_reason"` to explain why (e.g., `"Government internal system"`, `"Mobile app — available on Google Play"`, `"Private repository"`).
+
+**Examples of optional URL usage:**
+```json
+// Mobile app — no live web URL
+"live_url": null,
+"github_url": "https://github.com/yourname/app",
+"unavailable_reason": "Mobile app — available on Google Play"
+
+// Government project — no public URL, private repo
+"live_url": null,
+"github_url": null,
+"unavailable_reason": "Government internal system — source code is confidential"
     }
   ]
 }
@@ -711,7 +733,9 @@ Create **3 project entries**. At least 1 should have `"featured": true`.
 **File:** `components/ProjectCard.tsx`
 
 - Card shows: project image/screenshot, title, tagline, tech stack badges
-- "Live Demo" button (Lucide `ExternalLink`) and "GitHub" button (Lucide `Github`)
+- "Live Demo" button (Lucide `ExternalLink`) — **only shown if `live_url` is not null**
+- "GitHub" button (Lucide `Github`) — **only shown if `github_url` is not null**
+- If both URLs are null, show the `unavailable_reason` as a muted text badge instead
 - `featured` badge overlay on image corner
 - Card links to `/projects/[slug]` (the `id` field)
 - Hover animation: `scale(1.02)` + elevated shadow using Framer Motion
@@ -756,7 +780,8 @@ export async function generateStaticParams() {
 - Features list
 - Challenges section: problem → solution pairs (styled distinctly)
 - Learnings paragraph
-- CTA buttons: "Live Demo" (primary), "View on GitHub" (secondary), "← Back to Projects" (text link)
+- CTA buttons: "Live Demo" (primary, if `live_url` exists), "View on GitHub" (secondary, if `github_url` exists), "← Back to Projects" (text link)
+- If URLs are unavailable, show the `unavailable_reason` in a styled info card explaining why
 
 **Acceptance Criteria:** Each project has a working `/projects/[slug]` page. `npm run build` generates all pages statically. Navigation works.
 

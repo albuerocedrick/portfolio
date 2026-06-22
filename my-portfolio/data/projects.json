@@ -1,0 +1,113 @@
+{
+  "projects": [
+    {
+      "id": "ebpls-system",
+      "title": "Electronic Business Permits and Licensing System (eBPLS)",
+      "tagline": "A full-stack platform that streamlines business permit processing, assessment, payment, and document generation.",
+      "description": "The Electronic Business Permits and Licensing System (eBPLS) is a full-stack web application designed to modernize and automate business permit processing workflows. The system provides dedicated portals for Applicants, BPLO Officers, Treasury Officers, Barangay Officers, and System Administrators. It supports permit applications, document verification, fee assessment, payment processing, audit logging, PDF document generation, and workflow tracking. The platform was designed with scalability, security, and process automation in mind, implementing role-based access control, secure file management, and integrated online payment processing.",
+      "tech_stack": [
+        "React",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Supabase",
+        "Tailwind CSS",
+        "Zustand",
+        "PayMongo",
+        "JWT",
+        "pdf-lib"
+      ],
+      "features": [
+        "Role-based access control for Applicants, BPLO, Treasury, Barangay, and Administrators",
+        "Business permit application and processing workflow",
+        "Document upload and verification system",
+        "Treasury assessment and payment management",
+        "PayMongo online payment integration",
+        "Automated permit, receipt, and clearance PDF generation",
+        "Audit logging and activity tracking",
+        "Secure file storage using Supabase Storage",
+        "Workflow state management and status tracking",
+        "Email notification system for application updates"
+      ],
+      "challenges": [
+        {
+          "problem": "Managing complex workflows involving multiple departments and approval stages.",
+          "solution": "Implemented a backend-enforced state machine to validate application status transitions and ensure process integrity."
+        },
+        {
+          "problem": "Securely processing and verifying online payments.",
+          "solution": "Integrated PayMongo webhooks with HMAC verification and idempotency controls to prevent duplicate transaction processing."
+        }
+      ],
+      "learnings": "This project deepened my understanding of full-stack architecture, workflow automation, REST API design, authentication, database modeling, payment gateway integration, and enterprise-level software development practices.",
+      "live_url": "https://boss-frontend-yijy.onrender.com",
+      "github_url": null,
+      "image": "/images/ebpls-system.png",
+      "featured": true,
+      "tags": [
+        "Full-Stack",
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "System Architecture",
+        "RBAC",
+        "Business Process Automation"
+      ],
+      "unavailable_reason": "Source code is private. Live demonstration is available."
+    },
+    {
+      "id": "hanap-medisina-offline",
+      "title": "Hanap Medisina Offline",
+      "tagline": "An offline AI-powered mobile application for identifying Philippine medicinal plants.",
+      "description": "Hanap Medisina Offline is a React Native mobile application that enables users to identify Philippine medicinal plants using an on-device TensorFlow Lite model. Built with an offline-first architecture, the application provides instant plant identification, educational content, medicinal plant profiles, scan history, favorites, and local data management without requiring internet connectivity. The system was designed to be accessible in remote areas where internet access may be limited or unavailable.",
+      "tech_stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Python",
+        "TensorFlow Lite",
+        "react-native-fast-tflite",
+        "react-native-vision-camera",
+        "Zustand",
+        "AsyncStorage",
+        "NativeWind"
+      ],
+      "features": [
+        "Offline medicinal plant identification using TensorFlow Lite",
+        "Real-time camera-based plant scanning",
+        "Detailed medicinal plant information and references",
+        "Favorites and personal plant collection",
+        "Scan history with confidence scores",
+        "Offline-first architecture with zero cloud dependencies",
+        "Import and export of scan history data",
+        "Local plant database and educational content",
+        "Daily featured plants and trivia",
+        "Search and filter functionality"
+      ],
+      "challenges": [
+        {
+          "problem": "Running machine learning inference efficiently on mobile devices without internet access.",
+          "solution": "Integrated TensorFlow Lite with React Native and optimized model loading and prediction workflows for on-device classification."
+        },
+        {
+          "problem": "Providing a complete user experience without relying on cloud services.",
+          "solution": "Implemented an offline-first architecture using local JSON data, AsyncStorage persistence, and bundled application assets."
+        }
+      ],
+      "learnings": "This project expanded my experience in mobile development, AI integration, TensorFlow Lite deployment, offline-first architecture, state management, and building practical machine learning applications for real-world use cases.",
+      "live_url": null,
+      "github_url": "https://github.com/albuerocedrick/hanap-medisina-offline",
+      "image": "/images/hanap-medisina-offline.png",
+      "featured": true,
+      "tags": [
+        "React Native",
+        "AI",
+        "TensorFlow Lite",
+        "Mobile Development",
+        "Machine Learning",
+        "Offline-First"
+      ],
+      "unavailable_reason": "Mobile application. Source code is available, but no public web deployment is available."
+    }
+  ]
+}

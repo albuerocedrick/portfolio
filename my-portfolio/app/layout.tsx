@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 
 import { NavBar } from "@/components/NavBar";
 import { Toaster } from "react-hot-toast";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export default function RootLayout({
   children,
@@ -44,6 +45,7 @@ export default function RootLayout({
       <body className="bg-bg text-text font-body antialiased min-h-full flex flex-col">
         <NavBar />
         {children}
+        <ScrollToTop />
         <Toaster 
           position="bottom-right"
           toastOptions={{
