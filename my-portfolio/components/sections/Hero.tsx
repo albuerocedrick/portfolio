@@ -14,7 +14,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="text-accent font-medium text-sm md:text-base mb-6 tracking-wide"
         >
           Hi, my name is
@@ -23,7 +23,7 @@ export function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" as const }}
           className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-white/60"
         >
           Cedrick Albuero.
@@ -32,7 +32,7 @@ export function Hero() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" as const }}
           className="text-3xl md:text-4xl lg:text-6xl font-heading font-bold text-muted mb-8 tracking-tight"
         >
           I build scalable web and AI solutions.
@@ -41,7 +41,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" as const }}
           className="text-base md:text-lg text-muted max-w-2xl mb-12 leading-relaxed"
         >
           I am a Junior Full-Stack Developer & AI Integration Developer specializing in business process automation, offline-first applications, and scalable backend systems.
@@ -50,7 +50,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" as const }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           <a
