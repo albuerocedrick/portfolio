@@ -29,6 +29,8 @@ import { NavBar } from "@/components/NavBar";
 import { Toaster } from "react-hot-toast";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
+import ChatWidget from "@/components/ChatWidget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,7 +58,7 @@ export default function RootLayout({
             },
           }}
         />
-        {/* TODO: Add ChatWidget Component */}
+        <ChatWidget />
       </body>
     </html>
   );
