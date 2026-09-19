@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { toast } from 'react-hot-toast';
 
 type Message = {
   id: string;
@@ -21,13 +22,7 @@ const welcomeMessage: Message = {
   timestamp: Date.now(),
 };
 
-const mockResponses = [
-  "Cedrick is a Junior Full-Stack Developer based in Laguna, Philippines. He specializes in building web and mobile applications using React, Node.js, and PostgreSQL. He's currently open to full-time, part-time, or freelance opportunities.",
-  "Cedrick has built several projects including an Electronic Business Permits and Licensing System (eBPLS) for government workflow automation, and Hanap Medisina Offline, a React Native app that uses TensorFlow Lite to identify Philippine medicinal plants without internet connectivity.",
-  "You can reach Cedrick at albuerocedrick11@gmail.com. He typically responds within 24 hours. You can also find him on LinkedIn and GitHub.",
-  "Cedrick's tech stack includes React.js, Next.js, Node.js, PostgreSQL, React Native, Firebase, Python, and TensorFlow Lite. He focuses on clean code, scalable architecture, and solving real-world problems through technology.",
-  "Cedrick graduated with a Bachelor of Science in Computer Science. He's passionate about solving real-world problems with technology and has experience in both government and private sector projects.",
-];
+
 
 const suggestionChips = [
   "Tell me about Cedrick",
@@ -76,53 +71,77 @@ export default function ChatWidget() {
     }
   }, [isOpen]);
 
-  const sendMessage = useCallback((text: string) => {
+  const sendMessage = useCallback(async (text: string) => {
     if (text.trim() === '' || isLoading) return;
 
     setInput('');
-    setMessages((prev) => [
-      ...prev,
-      { id: uuidv4(), role: 'user', content: text.trim(), timestamp: Date.now() },
-    ]);
+    const newMessages = [
+      ...messages,
+      { id: uuidv4(), role: 'user', content: text.trim(), timestamp: Date.now() } as Message,
+    ];
+    setMessages(newMessages);
     setIsLoading(true);
 
-    setTimeout(() => {
+    const assistantId = uuidv4();
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: newMessages }),
+      });
+
       setIsLoading(false);
-      const assistantId = uuidv4();
-      const mockResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)];
+
+      if (!res.ok) {
+        if (res.status === 429) {
+          toast.error("You're sending messages too fast. Please wait a minute.");
+        } else {
+          toast.error("Something went wrong. Please try again.");
+        }
+        return;
+      }
 
       setMessages((prev) => [
         ...prev,
         { id: assistantId, role: 'assistant', content: '', isStreaming: true, timestamp: Date.now() },
       ]);
 
-      let charIndex = 0;
-      streamIntervalRef.current = setInterval(() => {
-        if (charIndex < mockResponse.length) {
-          const char = mockResponse[charIndex];
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantId ? { ...m, content: m.content + char } : m
-            )
-          );
-          charIndex++;
-        } else {
-          if (streamIntervalRef.current) {
-            clearInterval(streamIntervalRef.current);
-          }
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantId ? { ...m, isStreaming: false } : m
-            )
-          );
-          // Increment unread badge if drawer is closed
-          if (!isOpen) {
-            setUnreadCount((c) => c + 1);
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const lines = decoder.decode(value).split('\n').filter(l => l.startsWith('data: '));
+          for (const line of lines) {
+            const data = line.replace('data: ', '');
+            if (data === '[DONE]') break;
+            try {
+              const { delta } = JSON.parse(data);
+              setMessages((prev) => prev.map((m) =>
+                m.id === assistantId ? { ...m, content: m.content + delta } : m
+              ));
+            } catch (e) {
+              console.error("Failed to parse stream chunk", data);
+            }
           }
         }
-      }, 22);
-    }, 500);
-  }, [isLoading, isOpen]);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setMessages((prev) => prev.map((m) =>
+        m.id === assistantId ? { ...m, isStreaming: false } : m
+      ));
+      if (!isOpen) {
+        setUnreadCount((c) => c + 1);
+      }
+    }
+  }, [isLoading, isOpen, messages]);
 
   if (!isMounted) return null;
 

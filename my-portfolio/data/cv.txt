@@ -1,0 +1,54 @@
+Cedrick ALBUERO
+e-mail: albuerocedrick11@gmail.com tel: +639103145889
+Education and Qualifications
+2022-present Pamantasan ng Lungsod ng San
+Pablo
+San Pablo City, Laguna, Philippines
+Bachlor of Science in
+Information Technology
+Major in Software
+Development
+Projects
+May 2026 – Present Electronic Business Permits and
+Licensing System (eBPLS)
+Full Stack Developer
+Laguna, Philippines
+• Designed and developed a role-based Electronic Business Permits
+and Licensing System (eBPLS) for business application processing,
+verification workflows, fee assessments, and permit generation.
+• Built full-stack web application modules using React.js, Node.js,
+Express.js, PostgreSQL, Supabase, and Zustand.
+• Implemented REST APIs, JWT authentication, RBAC middleware,
+secure document uploads, audit logging, and workflow state-machine
+validation.
+• Integrated PayMongo online payment processing with webhook-based
+payment confirmation alongside OTC payment workflows.
+April 2026 – Present Hanap Medisina Offline Laguna, Philippines
+ Full-Stack & AI Mobile Application Project
+• Developed a fully offline React Native mobile application for identifying
+Philippine medicinal plants using an on-device TensorFlow Lite (TFLite)
+model.
+• Implemented offline-first architecture with local JSON databases, Zustand
+state management, AsyncStorage persistence, and embedded educational
+plant content.
+• Integrated mobile camera scanning and real-time AI inference using reactnative-vision-camera and react-native-fast-tflite.
+• Designed scalable application architecture using Expo Router, modular
+service layers, reusable UI components, and local data management
+systems.
+ Technical Skills
+ Programming: JavaScript, TypeScript, React.js, Express.js, Node.js, SQL
+ Tools & Technologies: Git, GitHub, REST APIs, Postman, VS Code, AI Tools
+Additional Information
+Interests: Artificial Intelligence, AI Automation, Web Development, UI/UX Design,
+Software Engineering, Language Technologies
+Achievements:
+• Developed multiple full stack web applications using modern
+JavaScript technologies.
+• 2024 Code Wars champion in our school
+• 2025 ICT Month Quiz Bee champion in our school
+• Completed independent learning projects focused on AI systems, APIs,
+and automation tools.
+• Maintained active software development projects through GitHub and
+self-directed technical study.
+Nationality: Filipino
+Languages: English(Fluent), Filipino(Native)

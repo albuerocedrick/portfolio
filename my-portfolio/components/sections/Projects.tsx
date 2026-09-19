@@ -68,7 +68,11 @@ export function Projects() {
         </div>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 min-h-[400px]">
+        <div className={`grid gap-6 md:gap-8 min-h-[400px] ${
+          filteredProjects.length === 1 ? "grid-cols-1 max-w-md mx-auto" :
+          filteredProjects.length === 2 ? "grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto" :
+          "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        }`}>
           <AnimatePresence mode="popLayout">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project) => (

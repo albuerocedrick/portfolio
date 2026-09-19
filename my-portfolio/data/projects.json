@@ -42,7 +42,7 @@
       "learnings": "This project deepened my understanding of full-stack architecture, workflow automation, REST API design, authentication, database modeling, payment gateway integration, and enterprise-level software development practices.",
       "live_url": "https://boss-frontend-yijy.onrender.com",
       "github_url": null,
-      "image": "/images/ebpls-system.png",
+      "image": "/images/ebpls-system-v2.png",
       "featured": true,
       "tags": [
         "Full-Stack",
@@ -108,44 +108,6 @@
         "Offline-First"
       ],
       "unavailable_reason": "Mobile application. Source code is available, but no public web deployment is available."
-    },
-    {
-      "id": "taskflow-dashboard",
-      "title": "TaskFlow — Project Management Dashboard",
-      "tagline": "A real-time collaborative dashboard for managing team tasks, sprints, and project timelines.",
-      "description": "TaskFlow is a modern project management web application designed to help teams organize their work efficiently. It features real-time updates, kanban boards, and detailed sprint tracking. Built with scalability and performance in mind.",
-      "tech_stack": [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Supabase",
-        "Framer Motion"
-      ],
-      "features": [
-        "Real-time collaborative kanban boards",
-        "Sprint planning and tracking",
-        "Role-based access control for team members",
-        "Automated progress reporting"
-      ],
-      "challenges": [
-        {
-          "problem": "Handling real-time synchronization across multiple clients without lag.",
-          "solution": "Utilized Supabase real-time subscriptions with optimistic UI updates for instant feedback."
-        }
-      ],
-      "learnings": "This project reinforced my understanding of real-time architectures, optimistic UI patterns, and complex state management in React applications.",
-      "live_url": "https://taskflow-demo.vercel.app",
-      "github_url": "https://github.com/albuerocedrick/taskflow",
-      "image": "/images/taskflow-dashboard.png",
-      "featured": false,
-      "tags": [
-        "Full-Stack",
-        "Next.js",
-        "TypeScript",
-        "Real-Time",
-        "Supabase"
-      ],
-      "unavailable_reason": null
     }
   ]
 }

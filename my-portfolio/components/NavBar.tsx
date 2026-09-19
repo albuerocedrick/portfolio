@@ -14,9 +14,11 @@ const SECTIONS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SECTION_IDS = SECTIONS.map((s) => s.id);
+
 export function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeSection = useActiveSection(SECTIONS.map((s) => s.id));
+  const activeSection = useActiveSection(SECTION_IDS);
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -32,7 +34,7 @@ export function NavBar() {
     return (
       <li key={section.id}>
         <Link
-          href={`#${section.id}`}
+          href={`/#${section.id}`}
           onClick={() => setIsOpen(false)}
           className={`block py-2 md:py-0 text-sm font-medium transition-colors duration-200 ${
             isActive ? "text-accent" : "text-muted hover:text-text"
@@ -48,7 +50,7 @@ export function NavBar() {
     <header className="fixed top-0 z-50 w-full bg-surface/80 backdrop-blur-md border-b border-white/10 shadow-sm transition-all duration-200">
       <div className="mx-auto flex items-center justify-between px-4 py-4 max-w-7xl md:px-8">
         <Link 
-          href="#hero" 
+          href="/#hero" 
           className="text-lg font-heading font-bold text-text hover:opacity-80 transition-opacity"
           onClick={() => setIsOpen(false)}
         >

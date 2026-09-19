@@ -54,7 +54,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           <a
-            href="#projects"
+            href="/#projects"
             className="flex items-center justify-center w-full sm:w-auto px-8 py-3 bg-accent text-white font-medium rounded-md shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-md"
           >
             View My Work
