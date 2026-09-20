@@ -45,9 +45,10 @@ export function Projects() {
           <h2 className="text-3xl md:text-5xl font-heading font-bold text-text mb-4">
             Selected Projects
           </h2>
-          <p className="text-lg text-muted max-w-2xl">
+          <p className="text-lg text-muted max-w-2xl mb-4">
             A collection of systems I've designed and built.
           </p>
+          <div className="w-20 h-1 bg-accent rounded-full mx-auto md:mx-0" />
         </motion.div>
 
         {/* ── Zone 1: Featured Grid ─────────────────────────────────────── */}

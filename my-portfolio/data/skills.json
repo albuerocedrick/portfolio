@@ -2,16 +2,18 @@
   "categories": [
     {
       "name": "Frontend & Mobile",
+      "icon": "MonitorSmartphone",
       "skills": [
         { "name": "React", "icon": "devicon-react-original" },
         { "name": "Next.js", "icon": "devicon-nextjs-plain" },
         { "name": "React Native", "icon": "devicon-react-original" },
-        { "name": "Tailwind CSS", "icon": "devicon-tailwindcss-original" },
-        { "name": "Expo", "icon": "devicon-react-original" }
+        { "name": "Expo", "icon": "devicon-react-original" },
+        { "name": "Tailwind CSS", "icon": "devicon-tailwindcss-original" }
       ]
     },
     {
-      "name": "Backend & Cloud",
+      "name": "Backend & Database",
+      "icon": "Database",
       "skills": [
         { "name": "Node.js", "icon": "devicon-nodejs-plain" },
         { "name": "Express.js", "icon": "devicon-express-original" },
@@ -21,15 +23,29 @@
       ]
     },
     {
-      "name": "Languages & Tools",
+      "name": "Languages",
+      "icon": "Code2",
       "skills": [
         { "name": "JavaScript", "icon": "devicon-javascript-plain" },
         { "name": "TypeScript", "icon": "devicon-typescript-plain" },
         { "name": "Python", "icon": "devicon-python-plain" },
-        { "name": "SQL", "icon": "devicon-azuresqldatabase-plain" },
+        { "name": "SQL", "icon": "devicon-azuresqldatabase-plain" }
+      ]
+    },
+    {
+      "name": "AI & Development Tools",
+      "icon": "Cpu",
+      "skills": [
+        { "name": "TensorFlow Lite", "icon": "devicon-tensorflow-original" },
         { "name": "Git", "icon": "devicon-git-plain" },
         { "name": "GitHub", "icon": "devicon-github-original" }
       ]
     }
+  ],
+  "currently_exploring": [
+    "Docker",
+    "CI/CD",
+    "Advanced TypeScript",
+    "AI Integration"
   ]
 }
