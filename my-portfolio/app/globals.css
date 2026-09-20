@@ -46,7 +46,7 @@
 /* Global base styles */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px; /* Approx. NavBar height — prevents sticky bar obscuring focused anchors */
+  scroll-padding-top: 69px; /* Exact NavBar height (44px items + 24px py-3 + 1px border) */
 }
 
 body {
@@ -64,6 +64,18 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--color-text);
   -webkit-box-shadow: 0 0 0px 1000px var(--color-bg) inset;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Horizontal scroll rail (hides scrollbar) */
+.chip-rail {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.chip-rail::-webkit-scrollbar {
+  display: none;
 }
 
 :root, [data-theme="dark"] {
