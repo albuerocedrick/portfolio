@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section id="hero" className="relative flex flex-col items-center justify-center min-h-screen px-4 pt-20 pb-16 md:px-8 bg-bg overflow-hidden">
-      
-      {/* Subtle Background Elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+    <section id="hero" className="relative bg-bg overflow-hidden py-24 md:py-32 px-4">
+      <div className="relative max-w-5xl mx-auto rounded-[20px] bg-surface shadow-card overflow-hidden px-6 py-6 md:px-12 md:py-12">
+        <div className="absolute inset-0 bg-accent/5 pointer-events-none" />
+        
+        {/* Subtle Background Elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-4xl text-center flex flex-col items-center">
+        <div className="relative z-10 w-full max-w-4xl mx-auto text-center flex flex-col items-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,6 +70,7 @@ export function Hero() {
             Download CV
           </a>
         </motion.div>
+      </div>
       </div>
     </section>
   );
