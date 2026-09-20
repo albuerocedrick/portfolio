@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Mail, MapPin, Clock } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { motion, Variants } from "framer-motion";
@@ -57,18 +56,6 @@ export function About() {
           >
             {/* Unified Profile + Contact Card */}
             <div className="rounded-2xl border border-white/15 bg-surface shadow-sm overflow-hidden">
-              {/* Profile Image — flush top */}
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image
-                  src="/images/profile.jpg"
-                  alt={aboutData.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 340px"
-                  priority
-                />
-              </div>
-
               {/* Contact Rows */}
               <div className="divide-y divide-white/10">
                 <div className="flex items-center gap-3 px-5 py-3 group">
