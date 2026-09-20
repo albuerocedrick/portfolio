@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, ExternalLink, Info } from "lucide-react";
+import { ChevronRight, ExternalLink, Info, LayoutGrid, CheckCircle2 } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
-import { ProjectsData, Project } from "@/types/project";
+import { ProjectsData } from "@/types/project";
 import projectsDataRaw from "@/data/projects.json";
 
 const projectsData = projectsDataRaw as ProjectsData;
@@ -43,7 +43,7 @@ export default async function ProjectPage({
 
   return (
     <main className="min-h-screen bg-bg text-text pt-24 pb-16 md:pt-32 md:pb-24">
-      <div className="mx-auto max-w-4xl px-4 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
         
         {/* Breadcrumb Navigation */}
         <nav className="flex items-center gap-2 text-sm text-muted mb-8 overflow-x-auto whitespace-nowrap pb-2">
@@ -66,7 +66,7 @@ export default async function ProjectPage({
             fill
             className="object-cover"
             priority
-            sizes="(max-width: 1024px) 100vw, 896px"
+            sizes="(max-width: 1024px) 100vw, 1152px"
           />
           {project.featured && (
             <div className="absolute top-4 right-4 md:top-6 md:right-6 px-4 py-1.5 bg-accent text-white text-xs md:text-sm font-semibold rounded-full shadow-md backdrop-blur-sm">
@@ -80,15 +80,22 @@ export default async function ProjectPage({
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-lg md:text-xl text-muted leading-relaxed max-w-3xl">
+          <p className="text-lg md:text-xl text-muted leading-relaxed max-w-3xl mb-4">
             {project.tagline}
           </p>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted/80">
+            <span>{project.metadata.role}</span>
+            <span className="opacity-50">•</span>
+            <span>{project.metadata.category}</span>
+            <span className="opacity-50">•</span>
+            <span>{project.metadata.year}</span>
+          </div>
         </div>
 
         {/* Action Buttons Row */}
-        <div className="flex flex-wrap items-center gap-4 mb-14 pb-10 border-b border-white/10">
+        <div className="flex flex-wrap items-center gap-4 mb-14 pb-10 border-b border-divider">
           {hasNoUrls ? (
-            <div className="flex items-start gap-3 bg-surface border border-white/10 rounded-xl p-4 w-full md:w-auto">
+            <div className="flex items-start gap-3 bg-surface border border-divider rounded-xl p-4 w-full md:w-auto">
               <Info className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
               <p className="text-sm text-muted">
                 {project.unavailable_reason}
@@ -101,7 +108,7 @@ export default async function ProjectPage({
                   href={project.live_url!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-medium rounded-lg shadow-sm hover:bg-accent/90 hover:shadow-md transition-all duration-200 w-full sm:w-auto"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-accent text-white font-medium rounded-lg shadow-sm hover:bg-accent/90 hover:shadow-md transition-all duration-200 w-full sm:w-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <ExternalLink className="w-4 h-4" />
                   Live Demo
@@ -112,7 +119,7 @@ export default async function ProjectPage({
                   href={project.github_url!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-surface border border-white/20 text-text font-medium rounded-lg hover:bg-white/5 hover:border-white/30 transition-all duration-200 w-full sm:w-auto"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-surface border border-divider text-text font-medium rounded-lg hover:bg-surface/80 hover:border-white/20 transition-all duration-200 w-full sm:w-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   <GithubIcon className="w-4 h-4" />
                   View on GitHub
@@ -124,7 +131,7 @@ export default async function ProjectPage({
           <div className="w-full sm:w-auto sm:ml-auto mt-4 sm:mt-0">
             <Link 
               href="/#projects"
-              className="inline-flex items-center justify-center py-3 text-sm font-medium text-muted hover:text-accent transition-colors duration-200"
+              className="inline-flex items-center justify-center py-3 text-sm font-medium text-muted hover:text-accent transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded-md px-2"
             >
               &larr; Back to Projects
             </Link>
@@ -132,63 +139,91 @@ export default async function ProjectPage({
         </div>
 
         {/* Project Content Body */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
-          {/* Main Column (Description, Features, Challenges, Learnings) */}
-          <div className="lg:col-span-2 space-y-12">
+          {/* Main Column */}
+          <div className="lg:col-span-8 space-y-16">
             
-            {/* Description */}
-            <section>
-              <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-4">
-                Overview
-              </h2>
-              <div className="text-base md:text-lg text-muted leading-relaxed whitespace-pre-wrap">
-                {project.description}
+            {/* Overview */}
+            <section className="space-y-8">
+              <div>
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-4">
+                  The Problem
+                </h2>
+                <p className="text-base md:text-lg text-muted leading-relaxed">
+                  {project.overview.problem}
+                </p>
+              </div>
+              <div>
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-4">
+                  The Solution
+                </h2>
+                <p className="text-base md:text-lg text-muted leading-relaxed">
+                  {project.overview.solution}
+                </p>
+              </div>
+              <div>
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-4">
+                  My Contribution
+                </h2>
+                <p className="text-base md:text-lg text-muted leading-relaxed">
+                  {project.overview.role}
+                </p>
               </div>
             </section>
 
             {/* Features */}
             {project.features.length > 0 && (
               <section>
-                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-5">
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-6">
                   Key Features
                 </h2>
-                <ul className="space-y-3">
-                  {project.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-muted">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
-                      <span className="leading-relaxed">{feature}</span>
-                    </li>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.features.map((featureGroup, i) => (
+                    <div key={i} className="bg-surface border border-divider rounded-xl p-5 shadow-sm">
+                      <div className="flex items-center gap-2 mb-3">
+                        <LayoutGrid className="w-4 h-4 text-accent" />
+                        <h3 className="font-heading font-semibold text-text">{featureGroup.category}</h3>
+                      </div>
+                      <ul className="space-y-2">
+                        {featureGroup.items.map((item, j) => (
+                          <li key={j} className="flex items-start gap-2 text-muted text-sm leading-relaxed">
+                            <span className="w-1 h-1 rounded-full bg-muted mt-2 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </section>
             )}
 
             {/* Challenges & Solutions */}
             {project.challenges.length > 0 && (
               <section>
-                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-5">
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-6">
                   Technical Challenges
                 </h2>
                 <div className="space-y-6">
                   {project.challenges.map((challenge, i) => (
                     <div 
                       key={i}
-                      className="bg-surface border border-white/5 rounded-xl p-5 md:p-6 shadow-sm"
+                      className="bg-surface border border-divider rounded-xl p-5 md:p-6 shadow-sm"
                     >
                       <div className="mb-4">
-                        <div className="flex items-center gap-2 text-amber-400 font-medium mb-2">
+                        <div className="flex items-center gap-2 text-amber-500/90 font-medium mb-2">
                           <span className="text-lg leading-none">⚡</span> Problem
                         </div>
-                        <p className="text-muted leading-relaxed pl-7 text-sm md:text-base">
+                        <p className="text-muted leading-relaxed text-sm md:text-base">
                           {challenge.problem}
                         </p>
                       </div>
-                      <div className="pt-4 border-t border-white/5">
-                        <div className="flex items-center gap-2 text-green-400 font-medium mb-2">
+                      <div className="pt-4 border-t border-divider">
+                        <div className="flex items-center gap-2 text-accent font-medium mb-2">
                           <span className="text-lg leading-none">✓</span> Solution
                         </div>
-                        <p className="text-muted leading-relaxed pl-7 text-sm md:text-base">
+                        <p className="text-muted leading-relaxed text-sm md:text-base">
                           {challenge.solution}
                         </p>
                       </div>
@@ -199,34 +234,71 @@ export default async function ProjectPage({
             )}
 
             {/* Learnings */}
-            {project.learnings && (
+            {project.learnings && project.learnings.length > 0 && (
               <section>
-                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-4">
+                <h2 className="text-xl md:text-2xl font-heading font-bold text-text mb-6">
                   What I Learned
                 </h2>
-                <p className="text-base md:text-lg text-muted leading-relaxed">
-                  {project.learnings}
-                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                  {project.learnings.map((learning, i) => (
+                    <div key={i} className="flex gap-4">
+                      <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-semibold text-text mb-1">{learning.title}</h4>
+                        <p className="text-muted text-sm md:text-base leading-relaxed">
+                          {learning.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </section>
             )}
           </div>
 
           {/* Sidebar Column (Tech Stack) */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-surface border border-white/10 rounded-2xl p-6 shadow-sm">
-              <h3 className="text-lg font-heading font-bold text-text mb-4 pb-4 border-b border-white/10">
-                Technologies Used
-              </h3>
-              <div className="flex flex-wrap gap-2.5">
-                {project.tech_stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 text-sm font-medium text-muted bg-white/5 border border-white/10 rounded-lg hover:border-white/20 transition-colors cursor-default"
-                  >
-                    {tech}
-                  </span>
-                ))}
+          <div className="lg:col-span-4">
+            <div className="sticky top-32 bg-surface border border-divider rounded-2xl p-6 shadow-sm">
+              
+              <div className="mb-6 pb-6 border-b border-divider">
+                <h3 className="text-sm font-semibold text-text uppercase tracking-wider mb-4">
+                  Project Info
+                </h3>
+                <dl className="space-y-3 text-sm">
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-muted">Role</dt>
+                    <dd className="text-text font-medium text-right">{project.metadata.role}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-muted">Category</dt>
+                    <dd className="text-text font-medium text-right">{project.metadata.category}</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className="text-muted">Platform</dt>
+                    <dd className="text-text font-medium text-right">
+                      {project.tags.includes("Web Development") ? "Web Application" : 
+                       project.tags.includes("Mobile Development") ? "Mobile Application" : "Software System"}
+                    </dd>
+                  </div>
+                </dl>
               </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-text uppercase tracking-wider mb-4">
+                  Technologies Used
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.full_tech_stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 text-xs font-medium text-muted bg-bg border border-divider rounded-md cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
           

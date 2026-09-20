@@ -46,7 +46,7 @@
 /* Global base styles */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 69px; /* Exact NavBar height (44px items + 24px py-3 + 1px border) */
+  scroll-padding-top: 100px; /* Accounts for NavBar height + visual buffer */
 }
 
 body {

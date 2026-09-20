@@ -3,15 +3,39 @@ export interface ProjectChallenge {
   solution: string;
 }
 
+export interface ProjectOverview {
+  problem: string;
+  solution: string;
+  role: string;
+}
+
+export interface ProjectFeatureCategory {
+  category: string;
+  items: string[];
+}
+
+export interface ProjectLearning {
+  title: string;
+  description: string;
+}
+
+export interface ProjectMetadata {
+  role: string;
+  category: string;
+  year: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   tagline: string;
-  description: string;
+  overview: ProjectOverview;
   tech_stack: string[];
-  features: string[];
+  full_tech_stack: string[];
+  features: ProjectFeatureCategory[];
   challenges: ProjectChallenge[];
-  learnings: string;
+  learnings: ProjectLearning[];
+  metadata: ProjectMetadata;
   live_url: string | null;
   github_url: string | null;
   image: string;
