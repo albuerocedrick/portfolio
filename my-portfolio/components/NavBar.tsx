@@ -97,7 +97,7 @@ export function NavBar() {
           <ThemeToggle />
           
           <a
-            href="/resume_v2.pdf"
+            href="/resume_v3.pdf"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download CV"
