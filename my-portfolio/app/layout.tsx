@@ -25,11 +25,12 @@ export const metadata: Metadata = {
   description: "Portfolio of Cedrick Albuero, a software engineer specializing in full-stack web development and AI integration.",
 };
 
+import dynamic from "next/dynamic";
 import { NavBar } from "@/components/NavBar";
 import { Toaster } from "react-hot-toast";
-import { ScrollToTop } from "@/components/ScrollToTop";
 
-import ChatWidget from "@/components/ChatWidget";
+const ScrollToTop = dynamic(() => import("@/components/ScrollToTop").then(mod => mod.ScrollToTop));
+const ChatWidget = dynamic(() => import("@/components/ChatWidget"));
 
 export default function RootLayout({
   children,
@@ -43,7 +44,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -70,9 +71,9 @@ export default function RootLayout({
           position="bottom-right"
           toastOptions={{
             style: {
-              background: '#13131A',
-              color: '#E8E8F0',
-              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'var(--color-surface)',
+              color: 'var(--color-text)',
+              border: '1px solid var(--color-divider)',
             },
           }}
         />

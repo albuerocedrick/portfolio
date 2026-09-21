@@ -7,7 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Send, AlertCircle, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import aboutData from "@/data/about.json";
 
 // Form Validation Schema
 const contactSchema = z.object({
@@ -76,12 +78,12 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-10 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text mb-4">Get in Touch</h2>
-          <div className="w-20 h-1 bg-accent rounded-full mx-auto mb-6" />
-          <p className="text-muted text-base md:text-lg">
-            Have a question or want to work together? Leave a message below.
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-text mb-5">Let's Build Something Useful</h2>
+          <div className="w-20 h-1 bg-accent rounded-full mx-auto mb-5" />
+          <p className="text-muted text-base md:text-lg max-w-lg mx-auto">
+            Have a project or opportunity in mind?<br className="hidden sm:block" /> I'd love to hear from you.
           </p>
         </motion.div>
 
@@ -91,7 +93,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="rounded-2xl border border-white/10 bg-surface/30 p-6 md:p-10 shadow-sm"
+          className="rounded-xl border border-divider bg-surface p-6 md:p-10 shadow-card"
         >
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" noValidate>
             
@@ -102,13 +104,14 @@ export function Contact() {
                 {...register("name")}
                 id="name"
                 type="text"
+                aria-describedby={errors.name ? "name-error" : undefined}
                 placeholder="John Doe"
-                className={`w-full px-4 py-3 rounded-xl border bg-bg/50 text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 ${
-                  errors.name ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-accent"
+                className={`w-full px-4 py-3 rounded-xl border bg-bg text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 ${
+                  errors.name ? "border-red-500/50 focus:border-red-500" : "border-divider focus:border-accent"
                 }`}
               />
               {errors.name && (
-                <p className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
+                <p id="name-error" className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
                   <AlertCircle className="w-3.5 h-3.5" />
                   {errors.name.message}
                 </p>
@@ -122,13 +125,14 @@ export function Contact() {
                 {...register("email")}
                 id="email"
                 type="email"
+                aria-describedby={errors.email ? "email-error" : undefined}
                 placeholder="john@example.com"
-                className={`w-full px-4 py-3 rounded-xl border bg-bg/50 text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 ${
-                  errors.email ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-accent"
+                className={`w-full px-4 py-3 rounded-xl border bg-bg text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 ${
+                  errors.email ? "border-red-500/50 focus:border-red-500" : "border-divider focus:border-accent"
                 }`}
               />
               {errors.email && (
-                <p className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
+                <p id="email-error" className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
                   <AlertCircle className="w-3.5 h-3.5" />
                   {errors.email.message}
                 </p>
@@ -142,13 +146,14 @@ export function Contact() {
                 {...register("message")}
                 id="message"
                 rows={5}
+                aria-describedby={errors.message ? "message-error" : undefined}
                 placeholder="How can I help you?"
-                className={`w-full px-4 py-3 rounded-xl border bg-bg/50 text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 resize-y min-h-[120px] ${
-                  errors.message ? "border-red-500/50 focus:border-red-500" : "border-white/10 focus:border-accent"
+                className={`w-full px-4 py-3 rounded-xl border bg-bg text-text placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-colors duration-200 resize-y min-h-[120px] ${
+                  errors.message ? "border-red-500/50 focus:border-red-500" : "border-divider focus:border-accent"
                 }`}
               />
               {errors.message && (
-                <p className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
+                <p id="message-error" className="text-xs text-red-400 font-medium flex items-center gap-1.5 mt-1">
                   <AlertCircle className="w-3.5 h-3.5" />
                   {errors.message.message}
                 </p>
@@ -159,7 +164,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-accent text-white font-semibold shadow-sm hover:bg-accent/90 focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg focus:ring-accent transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="mt-2 w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-accent text-white font-semibold shadow-sm hover:bg-accent/90 focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg focus:ring-accent transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
             >
               {isSubmitting ? (
                 <>
@@ -168,13 +173,49 @@ export function Contact() {
                 </>
               ) : (
                 <>
-                  <Send className="w-5 h-5" />
-                  Send Message
+                  Send Me a Message &rarr;
                 </>
               )}
             </button>
 
           </form>
+        </motion.div>
+
+        {/* Alternative Contact Methods */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 text-center"
+        >
+          <p className="text-sm text-muted mb-4">Or reach me directly at</p>
+          <a
+            href={`mailto:${aboutData.email}`}
+            className="text-text font-medium text-lg hover:text-accent transition-colors duration-150 mb-6 inline-block"
+          >
+            {aboutData.email}
+          </a>
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href={aboutData.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-surface border border-divider text-muted hover:text-accent hover:border-accent transition-all duration-150 cursor-pointer"
+            >
+              <LinkedinIcon className="w-4 h-4" />
+            </a>
+            <a
+              href={aboutData.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="w-11 h-11 flex items-center justify-center rounded-full bg-surface border border-divider text-muted hover:text-accent hover:border-accent transition-all duration-150 cursor-pointer"
+            >
+              <GithubIcon className="w-4 h-4" />
+            </a>
+          </div>
         </motion.div>
 
       </div>

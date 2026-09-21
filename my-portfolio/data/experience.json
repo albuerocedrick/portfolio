@@ -2,41 +2,25 @@
   "education": [
     {
       "institution": "Pamantasan ng Lungsod ng San Pablo",
+      "college": "College of Computing Sciences & Engineering",
       "degree": "Bachelor of Science in Information Technology",
       "period": "2022–Present",
-      "highlights": [
-        "Developed an Electronic Business Permits and Licensing System (eBPLS) featuring role-based workflows, payment integration, and business process automation.",
-        "Developed Hanap Medisina Offline, a React Native mobile application powered by TensorFlow Lite for offline medicinal plant identification.",
-        "Focused on Full-Stack Development, Software Engineering, Database Systems, and System Architecture."
-      ]
+      "progress": "4th Year · 1st Semester"
     }
   ],
-  "certifications": [],
-  "courses": [
+  "achievements": [
     {
-      "name": "Advanced Software Development",
-      "provider": "Pamantasan ng Lungsod ng Muntinlupa",
-      "year": "2025–2026"
+      "title": "National ICT Month 2024 Code Wars Competition",
+      "placement": "Champion",
+      "year": "2024",
+      "link": "https://www.facebook.com/share/p/19Et48iAiM/"
     },
     {
-      "name": "System Integration and Architecture I",
-      "provider": "Pamantasan ng Lungsod ng Muntinlupa",
-      "year": "2025–2026"
-    },
-    {
-      "name": "Client-Server Technologies and Applications",
-      "provider": "Pamantasan ng Lungsod ng Muntinlupa",
-      "year": "2025–2026"
-    },
-    {
-      "name": "Advanced Database Management Systems",
-      "provider": "Pamantasan ng Lungsod ng Muntinlupa",
-      "year": "2024–2025"
-    },
-    {
-      "name": "Application Development and Emerging Technologies",
-      "provider": "Pamantasan ng Lungsod ng Muntinlupa",
-      "year": "2025–2026"
+      "title": "Byte the Facts IT Quiz Bee",
+      "placement": "2nd Place, Team #14",
+      "year": "2025",
+      "link": "https://www.facebook.com/share/p/19eENbWsxn/"
     }
-  ]
+  ],
+  "certifications": []
 }

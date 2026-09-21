@@ -44,7 +44,7 @@ export function About() {
         </motion.div>
 
         {/* Top Row: Profile card (left, narrow) | Bio (right, wide) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16 mb-12">
 
           {/* Left Column: Profile Card + Contact Card */}
           <motion.div
@@ -55,9 +55,9 @@ export function About() {
             className="md:col-span-1 flex flex-col gap-6 max-w-xs w-full mx-auto md:mx-0"
           >
             {/* Unified Profile + Contact Card */}
-            <div className="rounded-2xl border border-white/15 bg-surface shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-divider bg-surface shadow-sm overflow-hidden">
               {/* Contact Rows */}
-              <div className="divide-y divide-white/10">
+              <div className="divide-y divide-divider">
                 <div className="flex items-center gap-3 px-5 py-3 group">
                   <span className="w-8 h-8 flex items-center justify-center rounded-lg bg-accent/15 text-accent flex-shrink-0">
                     <MapPin className="w-4 h-4" />
@@ -95,13 +95,13 @@ export function About() {
               </div>
 
               {/* Social Links */}
-              <div className="px-5 py-4 border-t border-white/10 flex items-center gap-3">
+              <div className="px-5 py-4 border-t border-divider flex items-center gap-3">
                 <a
                   href={aboutData.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="flex items-center gap-2 flex-1 justify-center py-2 rounded-lg border border-white/10 text-muted hover:text-text hover:border-white/25 hover:bg-white/5 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center gap-2 flex-1 justify-center py-2.5 rounded-full border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-white transition-colors duration-150 text-sm font-medium cursor-pointer"
                 >
                   <LinkedinIcon className="w-4 h-4" />
                   LinkedIn
@@ -111,7 +111,7 @@ export function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="flex items-center gap-2 flex-1 justify-center py-2 rounded-lg border border-white/10 text-muted hover:text-text hover:border-white/25 hover:bg-white/5 transition-all duration-200 text-sm font-medium"
+                  className="flex items-center gap-2 flex-1 justify-center py-2.5 rounded-full border-2 border-accent text-accent bg-transparent hover:bg-accent hover:text-white transition-colors duration-150 text-sm font-medium cursor-pointer"
                 >
                   <GithubIcon className="w-4 h-4" />
                   GitHub
@@ -151,7 +151,7 @@ export function About() {
         >
           <div className="flex items-center gap-4 mb-2">
             <h4 className="text-xl font-heading font-semibold text-text whitespace-nowrap">Engineering Values</h4>
-            <div className="flex-1 h-px bg-white/10" />
+            <div className="flex-1 h-px bg-divider" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -159,13 +159,16 @@ export function About() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -3, boxShadow: "0 8px 24px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.10)" }}
-                className="flex items-start gap-4 p-5 rounded-2xl border border-white/10 bg-surface shadow-sm transition-colors duration-200 hover:border-white/20 cursor-default"
+                whileHover={{ y: -3 }}
+                className="flex items-start gap-4 p-5 rounded-xl border border-divider bg-surface shadow-card transition-shadow duration-150 hover:shadow-card-hover cursor-default"
               >
                 <span className="mt-0.5 flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-xl bg-accent/15 text-accent">
                   {VALUES_ICONS[index % VALUES_ICONS.length]}
                 </span>
-                <p className="text-sm md:text-base text-muted leading-relaxed">{value}</p>
+                <div>
+                  <h5 className="text-base font-bold text-text mb-1">{value.title}</h5>
+                  <p className="text-sm md:text-base text-muted leading-relaxed">{value.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
