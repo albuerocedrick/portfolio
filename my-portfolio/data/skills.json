@@ -8,7 +8,10 @@
         { "name": "Next.js", "icon": "devicon-nextjs-plain" },
         { "name": "React Native", "icon": "devicon-react-original" },
         { "name": "Expo", "icon": "devicon-react-original" },
-        { "name": "Tailwind CSS", "icon": "devicon-tailwindcss-original" }
+        { "name": "HTML", "icon": "devicon-html5-plain" },
+        { "name": "CSS", "icon": "devicon-css3-plain" },
+        { "name": "Tailwind CSS", "icon": "devicon-tailwindcss-original" },
+        { "name": "Zustand" }
       ]
     },
     {
@@ -17,6 +20,9 @@
       "skills": [
         { "name": "Node.js", "icon": "devicon-nodejs-plain" },
         { "name": "Express.js", "icon": "devicon-express-original" },
+        { "name": "REST APIs" },
+        { "name": "JWT Authentication" },
+        { "name": "Role-Based Access Control (RBAC)" },
         { "name": "PostgreSQL", "icon": "devicon-postgresql-plain" },
         { "name": "Firebase", "icon": "devicon-firebase-plain" },
         { "name": "Supabase", "icon": "devicon-supabase-plain" }
@@ -38,7 +44,9 @@
       "skills": [
         { "name": "TensorFlow Lite", "icon": "devicon-tensorflow-original" },
         { "name": "Git", "icon": "devicon-git-plain" },
-        { "name": "GitHub", "icon": "devicon-github-original" }
+        { "name": "GitHub", "icon": "devicon-github-original" },
+        { "name": "Postman" },
+        { "name": "Google Antigravity" }
       ]
     }
   ],
