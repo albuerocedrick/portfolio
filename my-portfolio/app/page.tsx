@@ -9,7 +9,7 @@ const Contact = dynamic(() => import("@/components/sections/Contact").then(mod =
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col w-full">
+    <main id="main-content" className="flex min-h-screen flex-col w-full">
       <Hero />
       <About />
       <Projects />

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { toast } from 'react-hot-toast';
+import FocusLock from 'react-focus-lock';
 
 type Message = {
   id: string;
@@ -34,6 +35,29 @@ const suggestionChips = [
 const bubbleVariants: Variants = {
   hidden: { opacity: 0, y: 10, scale: 0.97 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', damping: 20, stiffness: 300 } },
+};
+
+const renderMessageText = (text: string) => {
+  const urlRegex = /((?:https?:\/\/[^\s]+)|(?:[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+))/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, i) => {
+    if (part.match(/^https?:\/\//)) {
+      return (
+        <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-accent transition-colors">
+          {part}
+        </a>
+      );
+    }
+    if (part.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+$/)) {
+      return (
+        <a key={i} href={`mailto:${part}`} className="underline underline-offset-2 hover:text-accent transition-colors">
+          {part}
+        </a>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
 };
 
 export default function ChatWidget() {
@@ -96,6 +120,8 @@ export default function ChatWidget() {
       if (!res.ok) {
         if (res.status === 429) {
           toast.error("You're sending messages too fast. Please wait a minute.");
+        } else if (res.status === 503) {
+          toast.error("The AI is currently experiencing high traffic. Please try again in a few seconds.");
         } else {
           toast.error("Something went wrong. Please try again.");
         }
@@ -156,7 +182,11 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed bottom-[88px] right-6 z-50 flex flex-col h-[600px] max-h-[calc(100vh-120px)] w-[calc(100vw-3rem)] sm:w-96 rounded-2xl border border-white/8 bg-surface shadow-lg overflow-hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Chat Assistant"
           >
+            <FocusLock returnFocus className="flex flex-col h-full overflow-hidden">
             {/* Header */}
             <div className="flex items-center gap-3 border-b border-white/5 px-4 py-3 shrink-0">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/20 text-accent">
@@ -188,13 +218,13 @@ export default function ChatWidget() {
                     className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}
                   >
                     <div
-                      className={`max-w-[82%] px-4 py-3 text-sm break-words leading-relaxed ${
+                      className={`max-w-[82%] px-4 py-3 text-sm break-words leading-relaxed whitespace-pre-wrap ${
                         isUser
                           ? 'rounded-2xl rounded-br-sm bg-accent text-white'
                           : 'rounded-2xl rounded-bl-sm border border-white/10 bg-bg text-text'
                       }`}
                     >
-                      {message.content || (message.isStreaming ? '' : '')}
+                      {renderMessageText(message.content || (message.isStreaming ? '' : ''))}
                       {message.isStreaming && !isUser && (
                         <motion.span
                           animate={{ opacity: [1, 0] }}
@@ -292,6 +322,7 @@ export default function ChatWidget() {
                 </motion.button>
               </div>
             </div>
+            </FocusLock>
           </motion.div>
         )}
       </AnimatePresence>

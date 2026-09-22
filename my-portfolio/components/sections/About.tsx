@@ -150,7 +150,7 @@ export function About() {
           className="space-y-5"
         >
           <div className="flex items-center gap-4 mb-2">
-            <h4 className="text-xl font-heading font-semibold text-text whitespace-nowrap">Engineering Values</h4>
+            <h3 className="text-xl font-heading font-semibold text-text whitespace-nowrap">Engineering Values</h3>
             <div className="flex-1 h-px bg-divider" />
           </div>
 
@@ -166,7 +166,7 @@ export function About() {
                   {VALUES_ICONS[index % VALUES_ICONS.length]}
                 </span>
                 <div>
-                  <h5 className="text-base font-bold text-text mb-1">{value.title}</h5>
+                  <h4 className="text-base font-bold text-text mb-1">{value.title}</h4>
                   <p className="text-sm md:text-base text-muted leading-relaxed">{value.description}</p>
                 </div>
               </motion.div>

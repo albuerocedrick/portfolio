@@ -78,10 +78,10 @@ export function NavBar() {
                   id={`nav-chip-${section.id}`}
                   href={`/#${section.id}`}
                   onClick={() => handleNavClick(section.id)}
-                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap cursor-pointer transition-colors duration-100 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none [scroll-snap-align:center] ${
+                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium whitespace-nowrap cursor-pointer transition-all duration-100 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none [scroll-snap-align:center] ${
                     isActive
                       ? "bg-accent text-white"
-                      : "bg-transparent border border-divider text-muted hover:bg-surface hover:text-text"
+                      : "bg-transparent border border-divider text-text/70 hover:bg-surface hover:text-text/100"
                   }`}
                 >
                   {section.label}

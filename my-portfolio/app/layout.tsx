@@ -21,8 +21,45 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cedrickalbuero.vercel.app"),
   title: "Cedrick Albuero — Software Engineer",
-  description: "Portfolio of Cedrick Albuero, a software engineer specializing in full-stack web development and AI integration.",
+  description: "Portfolio of Cedrick Albuero, an IT student and aspiring software engineer specializing in full-stack web development and AI integration.",
+  keywords: [
+    "Cedrick Albuero",
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Web Development",
+    "Mobile Development",
+    "AI Integration",
+    "React",
+    "Next.js",
+    "Philippines"
+  ],
+  authors: [{ name: "Cedrick Albuero", url: "https://github.com/albuerocedrick" }],
+  creator: "Cedrick Albuero",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://cedrickalbuero.vercel.app",
+    title: "Cedrick Albuero — Software Engineer",
+    description: "Portfolio of Cedrick Albuero, an IT student and aspiring software engineer specializing in full-stack web development and AI integration.",
+    siteName: "Cedrick Albuero Portfolio",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Cedrick Albuero Portfolio Preview",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cedrick Albuero — Software Engineer",
+    description: "Portfolio of Cedrick Albuero, an IT student and aspiring software engineer specializing in full-stack web development and AI integration.",
+    creator: "@cedrickalbuero",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 import dynamic from "next/dynamic";
@@ -64,6 +101,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-bg text-text font-body antialiased min-h-full flex flex-col">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-surface focus:text-text focus:font-bold focus:rounded-md">
+          Skip to content
+        </a>
         <NavBar />
         {children}
         <ScrollToTop />
